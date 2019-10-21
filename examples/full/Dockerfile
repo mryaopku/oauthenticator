@@ -6,8 +6,30 @@ FROM jupyterhub/jupyterhub
 
 MAINTAINER Project Jupyter <ipython-dev@scipy.org>
 
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup && \
+    echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
+    apt update && \
+    apt upgrade -y && \
+    apt install -y libasound2 && \
+    apt install -y libfontconfig1 && \
+    apt install -y libgl1
+
 # Install oauthenticator from git
-RUN python3 -m pip install oauthenticator
+RUN conda update -c conda-forge --all && \
+    conda update -c conda-forge --all && \
+    conda update -c conda-forge --all && \
+    python3 -m pip install oauthenticator && \
+    conda install -c conda-forge jupyterlab && \
+    conda clean -a
 
 # Create oauthenticator directory and put necessary files in it
 RUN mkdir /srv/oauthenticator
