@@ -24,12 +24,12 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup && \
     apt install -y libgl1
 
 # Install oauthenticator from git
-RUN conda update -c conda-forge --all && \
-    conda update -c conda-forge --all && \
-    conda update -c conda-forge --all && \
+RUN conda update -c conda-forge -y --all && \
+    conda update -c conda-forge -y --all && \
+    conda update -c conda-forge -y --all && \
     python3 -m pip install oauthenticator && \
-    conda install -c conda-forge jupyterlab && \
-    conda clean -a
+    conda install -c conda-forge -y jupyterlab && \
+    conda clean -ay
 
 # Create oauthenticator directory and put necessary files in it
 RUN mkdir /srv/oauthenticator

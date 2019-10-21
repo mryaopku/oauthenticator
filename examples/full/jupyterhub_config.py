@@ -9,7 +9,7 @@ c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
 c.LocalGitHubOAuthenticator.create_system_users = True
 
 c.Authenticator.whitelist = whitelist = set()
-c.JupyterHub.admin_users = admin = set()
+c.Authenticator.admin_users = admin = set()
 
 import os
 import sys
