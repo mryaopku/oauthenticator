@@ -17,11 +17,11 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup && \
     echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
     echo "deb http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
     echo "deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
-    apt update && \
-    apt upgrade -y && \
-    apt install -y libasound2 && \
-    apt install -y libfontconfig1 && \
-    apt install -y libgl1
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y libasound2 && \
+    apt-get install -y libfontconfig1 && \
+    apt-get install -y libgl1
 
 # Install oauthenticator from git
 RUN conda update -c conda-forge -y --all && \
