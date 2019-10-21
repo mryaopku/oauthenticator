@@ -40,3 +40,5 @@ if os.path.exists(keyfile):
     c.JupyterHub.ssl_key = keyfile
 if os.path.exists(certfile):
     c.JupyterHub.ssl_cert = certfile
+
+c.Spawner.default_url = '/lab'
